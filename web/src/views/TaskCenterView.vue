@@ -557,10 +557,7 @@ async function loadTasks() {
 }
 
 async function refreshAll() {
-  const results = await Promise.allSettled([loadOverview(), loadTasks()]);
-  if (results.some((result) => result.status === "rejected")) {
-    window.console.error("閮ㄥ垎浠诲姟鏁版嵁鍔犺浇澶辫触锛岃绋嶅悗閲嶈瘯");
-  }
+  await Promise.allSettled([loadOverview(), loadTasks()]);
 }
 
 function resetFilters() {
