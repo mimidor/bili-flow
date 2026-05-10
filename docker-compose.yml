@@ -1,10 +1,10 @@
 services:
-  bili-auto:
+  bili-flow:
     build:
       context: .
       dockerfile: Dockerfile
-    image: bili-auto:latest
-    container_name: bili-auto
+    image: bili-flow:latest
+    container_name: bili-flow
     env_file:
       - .env
     environment:

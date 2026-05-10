@@ -17,7 +17,7 @@ INSERT INTO runtime_configs (key, value) VALUES
 ('ALIYUN_OSS_ACCESS_KEY_SECRET', ''),
 ('ALIYUN_OSS_BUCKET', ''),
 ('ALIYUN_OSS_ENDPOINT', ''),
-('ALIYUN_OSS_PREFIX', 'bili-auto/asr'),
+('ALIYUN_OSS_PREFIX', 'bili-flow/asr'),
 ('ASR_PROVIDER', 'local_whisper'),
 ('BILIBILI_COOKIE', ''),
 ('DASHSCOPE_API_KEY', ''),

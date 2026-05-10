@@ -17,11 +17,11 @@ from app.utils.process_lock import acquire_singleton_lock
 from app.utils.runtime_home import get_runtime_home
 
 
-BACKEND_FOLDER_NAME = "bili-backend"
-SCHEDULER_FOLDER_NAME = "bili-scheduler"
-LAUNCHER_FOLDER_NAME = "bili-launcher"
-BACKEND_EXE_NAME = "bili-backend.exe"
-SCHEDULER_EXE_NAME = "bili-scheduler.exe"
+BACKEND_FOLDER_NAME = "bili-flow-backend"
+SCHEDULER_FOLDER_NAME = "bili-flow-scheduler"
+LAUNCHER_FOLDER_NAME = "bili-flow-launcher"
+BACKEND_EXE_NAME = "bili-flow-backend.exe"
+SCHEDULER_EXE_NAME = "bili-flow-scheduler.exe"
 
 
 def _is_frozen() -> bool:
@@ -57,12 +57,13 @@ def _scheduler_executable() -> Path:
 
 def _build_env() -> dict[str, str]:
     env = os.environ.copy()
-    runtime_home = Path(env.get("BILI_AUTO_HOME") or get_runtime_home())
+    runtime_home = Path(env.get("BILI_FLOW_HOME") or env.get("BILI_AUTO_HOME") or get_runtime_home())
     runtime_home.mkdir(parents=True, exist_ok=True)
     (runtime_home / "data").mkdir(parents=True, exist_ok=True)
     (runtime_home / "logs").mkdir(parents=True, exist_ok=True)
     (runtime_home / "models").mkdir(parents=True, exist_ok=True)
     (runtime_home / ".runtime" / "locks").mkdir(parents=True, exist_ok=True)
+    env["BILI_FLOW_HOME"] = str(runtime_home)
     env["BILI_AUTO_HOME"] = str(runtime_home)
 
     tools_dir = _release_root() / "tools"

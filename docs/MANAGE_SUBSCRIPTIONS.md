@@ -1,68 +1,68 @@
-# UP主订阅管理指南
+﻿# UP涓昏闃呯鐞嗘寚鍗?
 
-## 📺 方法一：交互式管理工具（推荐）
+## 馃摵 鏂规硶涓€锛氫氦浜掑紡绠＄悊宸ュ叿锛堟帹鑽愶級
 
-使用我为你创建的管理脚本，可以轻松添加、查看、编辑和删除UP主订阅。
+浣跨敤鎴戜负浣犲垱寤虹殑绠＄悊鑴氭湰锛屽彲浠ヨ交鏉炬坊鍔犮€佹煡鐪嬨€佺紪杈戝拰鍒犻櫎UP涓昏闃呫€?
 
-### 启动管理工具
+### 鍚姩绠＄悊宸ュ叿
 
 ```bash
-cd /Users/aniss/Code/bili-auto
+cd /Users/aniss/Code/bili-flow
 uv run python manage_subscriptions.py
 ```
 
-### 功能说明
+### 鍔熻兘璇存槑
 
 ```
-1️⃣  查看所有UP主订阅
-    显示当前数据库中的所有订阅UP主及其状态
+1锔忊儯  鏌ョ湅鎵€鏈塙P涓昏闃?
+    鏄剧ず褰撳墠鏁版嵁搴撲腑鐨勬墍鏈夎闃匲P涓诲強鍏剁姸鎬?
 
-2️⃣  添加单个UP主
-    逐个输入UP主ID (mid)、名字、备注等信息
-    示例:
+2锔忊儯  娣诲姞鍗曚釜UP涓?
+    閫愪釜杈撳叆UP涓籌D (mid)銆佸悕瀛椼€佸娉ㄧ瓑淇℃伅
+    绀轰緥:
     - mid: 1988098633
-    - 名字: 李毓佳
-    - 备注: 科技UP主（可选）
+    - 鍚嶅瓧: 鏉庢瘬浣?
+    - 澶囨敞: 绉戞妧UP涓伙紙鍙€夛級
 
-3️⃣  批量添加UP主
-    一次性添加多个UP主，格式为: mid|名字|备注
-    示例:
-    1988098633|李毓佳|科技UP主
-    399658881|罗翔说法律|法律讲解
-    （按 Ctrl+D 结束输入）
+3锔忊儯  鎵归噺娣诲姞UP涓?
+    涓€娆℃€ф坊鍔犲涓猆P涓伙紝鏍煎紡涓? mid|鍚嶅瓧|澶囨敞
+    绀轰緥:
+    1988098633|鏉庢瘬浣硘绉戞妧UP涓?
+    399658881|缃楃繑璇存硶寰媩娉曞緥璁茶В
+    锛堟寜 Ctrl+D 缁撴潫杈撳叆锛?
 
-4️⃣  编辑UP主信息
-    修改UP主的名字或备注
+4锔忊儯  缂栬緫UP涓讳俊鎭?
+    淇敼UP涓荤殑鍚嶅瓧鎴栧娉?
 
-5️⃣  启用/禁用UP主
-    暂时停止或恢复对某个UP主的检测
+5锔忊儯  鍚敤/绂佺敤UP涓?
+    鏆傛椂鍋滄鎴栨仮澶嶅鏌愪釜UP涓荤殑妫€娴?
 
-6️⃣  删除UP主
-    删除不再需要关注的UP主订阅
+6锔忊儯  鍒犻櫎UP涓?
+    鍒犻櫎涓嶅啀闇€瑕佸叧娉ㄧ殑UP涓昏闃?
 
-0️⃣  退出
-    退出程序
+0锔忊儯  閫€鍑?
+    閫€鍑虹▼搴?
 ```
 
 ---
 
-## 🐍 方法二：Python 一行命令
+## 馃悕 鏂规硶浜岋細Python 涓€琛屽懡浠?
 
-### 添加单个UP主
+### 娣诲姞鍗曚釜UP涓?
 
 ```bash
 uv run python -c "
 from app.models.database import get_db, Subscription
 
 db = get_db()
-sub = Subscription(mid='1988098633', name='李毓佳', notes='科技UP主')
+sub = Subscription(mid='1988098633', name='鏉庢瘬浣?, notes='绉戞妧UP涓?)
 db.add(sub)
 db.commit()
-print('✅ 成功添加UP主: 李毓佳')
+print('鉁?鎴愬姛娣诲姞UP涓? 鏉庢瘬浣?)
 "
 ```
 
-### 批量添加多个UP主
+### 鎵归噺娣诲姞澶氫釜UP涓?
 
 ```bash
 uv run python -c "
@@ -70,18 +70,18 @@ from app.models.database import get_db, Subscription
 
 db = get_db()
 
-# UP主信息列表
+# UP涓讳俊鎭垪琛?
 uppers = [
-    {'mid': '1988098633', 'name': '李毓佳', 'notes': '科技UP主'},
-    {'mid': '399658881', 'name': '罗翔说法律', 'notes': '法律讲解'},
-    {'mid': '2070143629', 'name': '油管搬运工', 'notes': '英文字幕搬运'},
+    {'mid': '1988098633', 'name': '鏉庢瘬浣?, 'notes': '绉戞妧UP涓?},
+    {'mid': '399658881', 'name': '缃楃繑璇存硶寰?, 'notes': '娉曞緥璁茶В'},
+    {'mid': '2070143629', 'name': '娌圭鎼繍宸?, 'notes': '鑻辨枃瀛楀箷鎼繍'},
 ]
 
 for upper in uppers:
-    # 检查是否已存在
+    # 妫€鏌ユ槸鍚﹀凡瀛樺湪
     existing = db.query(Subscription).filter_by(mid=upper['mid']).first()
     if existing:
-        print(f\"⏭️  跳过: {upper['name']} (已存在)\")
+        print(f\"鈴笍  璺宠繃: {upper['name']} (宸插瓨鍦?\")
         continue
     
     sub = Subscription(
@@ -90,27 +90,27 @@ for upper in uppers:
         notes=upper['notes']
     )
     db.add(sub)
-    print(f\"✅ 添加: {upper['name']}\")
+    print(f\"鉁?娣诲姞: {upper['name']}\")
 
 db.commit()
-print('✅ 全部完成')
+print('鉁?鍏ㄩ儴瀹屾垚')
 "
 ```
 
 ---
 
-## 📋 方法三：配置文件导入
+## 馃搵 鏂规硶涓夛細閰嶇疆鏂囦欢瀵煎叆
 
-首先，创建一个 `subscriptions.txt` 文件，格式为 `mid|名字|备注`：
+棣栧厛锛屽垱寤轰竴涓?`subscriptions.txt` 鏂囦欢锛屾牸寮忎负 `mid|鍚嶅瓧|澶囨敞`锛?
 
 ```txt
-1988098633|李毓佳|科技UP主
-399658881|罗翔说法律|法律讲解
-2070143629|油管搬运工|英文字幕搬运
-156160448|朱一旦的枯燥生活|幽默UP主
+1988098633|鏉庢瘬浣硘绉戞妧UP涓?
+399658881|缃楃繑璇存硶寰媩娉曞緥璁茶В
+2070143629|娌圭鎼繍宸鑻辨枃瀛楀箷鎼繍
+156160448|鏈变竴鏃︾殑鏋嚗鐢熸椿|骞介粯UP涓?
 ```
 
-然后运行导入脚本：
+鐒跺悗杩愯瀵煎叆鑴氭湰锛?
 
 ```bash
 uv run python -c "
@@ -132,104 +132,104 @@ with open('subscriptions.txt', 'r', encoding='utf-8') as f:
         name = parts[1].strip()
         notes = parts[2].strip() if len(parts) > 2 else None
         
-        # 检查是否已存在
+        # 妫€鏌ユ槸鍚﹀凡瀛樺湪
         existing = db.query(Subscription).filter_by(mid=mid).first()
         if existing:
-            print(f'⏭️  跳过: {name}')
+            print(f'鈴笍  璺宠繃: {name}')
             continue
         
         sub = Subscription(mid=mid, name=name, notes=notes)
         db.add(sub)
-        print(f'✅ 添加: {name}')
+        print(f'鉁?娣诲姞: {name}')
 
 db.commit()
-print('✅ 导入完成')
+print('鉁?瀵煎叆瀹屾垚')
 "
 ```
 
 ---
 
-## 📊 如何获取UP主的 MID
+## 馃搳 濡備綍鑾峰彇UP涓荤殑 MID
 
-### 方式1：从网址获取
-- 访问UP主主页，URL格式: `https://space.bilibili.com/{MID}`
-- 复制 `{MID}` 部分即可
+### 鏂瑰紡1锛氫粠缃戝潃鑾峰彇
+- 璁块棶UP涓讳富椤碉紝URL鏍煎紡: `https://space.bilibili.com/{MID}`
+- 澶嶅埗 `{MID}` 閮ㄥ垎鍗冲彲
 
-### 方式2：B站API查询
+### 鏂瑰紡2锛欱绔橝PI鏌ヨ
 ```bash
-curl "https://api.bilibili.com/x/web-interface/search/type?search_type=bili_user&keyword=李毓佳" | grep -o '"mid":[0-9]*' | head -1
+curl "https://api.bilibili.com/x/web-interface/search/type?search_type=bili_user&keyword=鏉庢瘬浣? | grep -o '"mid":[0-9]*' | head -1
 ```
 
-### 方式3：常见UP主的MID
+### 鏂瑰紡3锛氬父瑙乁P涓荤殑MID
 
-| UP主 | MID | 类别 |
+| UP涓?| MID | 绫诲埆 |
 |------|------|------|
-| 李毓佳 | 1988098633 | 科技/评测 |
-| 罗翔说法律 | 399658881 | 法律讲解 |
-| 油管搬运工 | 2070143629 | 英文搬运 |
-| 朱一旦的枯燥生活 | 156160448 | 娱乐/幽默 |
-| 半泽直树研究所 | 1395169867 | 番剧/分析 |
-| 高山定士 | 159041871 | 动漫评测 |
-| 狼叔 | 337338227 | 游戏 |
+| 鏉庢瘬浣?| 1988098633 | 绉戞妧/璇勬祴 |
+| 缃楃繑璇存硶寰?| 399658881 | 娉曞緥璁茶В |
+| 娌圭鎼繍宸?| 2070143629 | 鑻辨枃鎼繍 |
+| 鏈变竴鏃︾殑鏋嚗鐢熸椿 | 156160448 | 濞变箰/骞介粯 |
+| 鍗婃辰鐩存爲鐮旂┒鎵€ | 1395169867 | 鐣墽/鍒嗘瀽 |
+| 楂樺北瀹氬＋ | 159041871 | 鍔ㄦ极璇勬祴 |
+| 鐙煎彅 | 337338227 | 娓告垙 |
 
 ---
 
-## ✅ 验证订阅是否添加成功
+## 鉁?楠岃瘉璁㈤槄鏄惁娣诲姞鎴愬姛
 
-添加后，可以通过以下方式验证：
+娣诲姞鍚庯紝鍙互閫氳繃浠ヤ笅鏂瑰紡楠岃瘉锛?
 
 ```bash
-# 查看所有订阅
+# 鏌ョ湅鎵€鏈夎闃?
 uv run python -c "
 from app.models.database import get_db, Subscription
 
 db = get_db()
 subs = db.query(Subscription).filter_by(is_active=True).all()
 
-print('\\n=== 活跃UP主订阅 ===\\n')
+print('\\n=== 娲昏穬UP涓昏闃?===\\n')
 for sub in subs:
-    print(f'📺 {sub.name} (MID: {sub.mid})')
+    print(f'馃摵 {sub.name} (MID: {sub.mid})')
     if sub.notes:
-        print(f'   📝 {sub.notes}')
-print(f'\\n📊 总计: {len(subs)} 个')
+        print(f'   馃摑 {sub.notes}')
+print(f'\\n馃搳 鎬昏: {len(subs)} 涓?)
 "
 ```
 
 ---
 
-## 🚀 启动系统开始检测
+## 馃殌 鍚姩绯荤粺寮€濮嬫娴?
 
-添加UP主后，启动主程序：
+娣诲姞UP涓诲悗锛屽惎鍔ㄤ富绋嬪簭锛?
 
 ```bash
 uv run python main.py
 ```
 
-系统将：
-1. 每 10 分钟检测一次所有UP主的新视频
-2. 每 5 分钟检测一次所有UP主的新动态
-3. 自动处理发现的新内容
+绯荤粺灏嗭細
+1. 姣?10 鍒嗛挓妫€娴嬩竴娆℃墍鏈塙P涓荤殑鏂拌棰?
+2. 姣?5 鍒嗛挓妫€娴嬩竴娆℃墍鏈塙P涓荤殑鏂板姩鎬?
+3. 鑷姩澶勭悊鍙戠幇鐨勬柊鍐呭
 
-查看实时日志：
+鏌ョ湅瀹炴椂鏃ュ織锛?
 ```bash
 tail -f logs/bili.log
 ```
 
 ---
 
-## 💡 常见问题
+## 馃挕 甯歌闂
 
-**Q: 如何暂停某个UP主的检测？**
-A: 运行管理工具，选择 "5️⃣ 启用/禁用UP主"，禁用即可。
+**Q: 濡備綍鏆傚仠鏌愪釜UP涓荤殑妫€娴嬶紵**
+A: 杩愯绠＄悊宸ュ叿锛岄€夋嫨 "5锔忊儯 鍚敤/绂佺敤UP涓?锛岀鐢ㄥ嵆鍙€?
 
-**Q: 如何修改UP主的信息？**
-A: 运行管理工具，选择 "4️⃣ 编辑UP主信息"。
+**Q: 濡備綍淇敼UP涓荤殑淇℃伅锛?*
+A: 杩愯绠＄悊宸ュ叿锛岄€夋嫨 "4锔忊儯 缂栬緫UP涓讳俊鎭?銆?
 
-**Q: 添加后多久会开始处理？**
-A: 最多等待 5-10 分钟（取决于检测周期）。
+**Q: 娣诲姞鍚庡涔呬細寮€濮嬪鐞嗭紵**
+A: 鏈€澶氱瓑寰?5-10 鍒嗛挓锛堝彇鍐充簬妫€娴嬪懆鏈燂級銆?
 
-**Q: 如何导出已添加的UP主列表？**
-A: 运行管理工具，选择 "1️⃣ 查看所有UP主"，或用以下命令：
+**Q: 濡備綍瀵煎嚭宸叉坊鍔犵殑UP涓诲垪琛紵**
+A: 杩愯绠＄悊宸ュ叿锛岄€夋嫨 "1锔忊儯 鏌ョ湅鎵€鏈塙P涓?锛屾垨鐢ㄤ互涓嬪懡浠わ細
 ```bash
 uv run python -c "
 from app.models.database import get_db, Subscription
@@ -241,18 +241,19 @@ for sub in db.query(Subscription).all():
 
 ---
 
-## 🔄 数据库字段说明
+## 馃攧 鏁版嵁搴撳瓧娈佃鏄?
 
-| 字段 | 说明 | 示例 |
+| 瀛楁 | 璇存槑 | 绀轰緥 |
 |------|------|------|
-| `mid` | UP主UID（唯一） | 1988098633 |
-| `name` | UP主昵称 | 李毓佳 |
-| `notes` | 备注（可选） | 科技UP主 |
-| `is_active` | 是否激活 | true |
-| `last_check_time` | 最后检测时间 | 2026-03-26 16:30 |
-| `last_video_bvid` | 最后检测的视频ID | BVxxxxxx |
-| `last_dynamic_id` | 最后检测的动态ID | 123456789 |
+| `mid` | UP涓籙ID锛堝敮涓€锛?| 1988098633 |
+| `name` | UP涓绘樀绉?| 鏉庢瘬浣?|
+| `notes` | 澶囨敞锛堝彲閫夛級 | 绉戞妧UP涓?|
+| `is_active` | 鏄惁婵€娲?| true |
+| `last_check_time` | 鏈€鍚庢娴嬫椂闂?| 2026-03-26 16:30 |
+| `last_video_bvid` | 鏈€鍚庢娴嬬殑瑙嗛ID | BVxxxxxx |
+| `last_dynamic_id` | 鏈€鍚庢娴嬬殑鍔ㄦ€両D | 123456789 |
 
 ---
 
-**现在就开始添加你的首个UP主吧！** 🎉
+**鐜板湪灏卞紑濮嬫坊鍔犱綘鐨勯涓猆P涓诲惂锛?* 馃帀
+

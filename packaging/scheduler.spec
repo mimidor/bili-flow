@@ -55,7 +55,7 @@ exe = EXE(
     a.zipfiles,
     a.datas,
     [],
-    name="bili-scheduler",
+    name="bili-flow-scheduler",
     console=False,
     disable_windowed_traceback=True,
     strip=False,
@@ -68,5 +68,5 @@ coll = COLLECT(
     a.datas,
     strip=False,
     upx=False,
-    name="bili-scheduler",
+    name="bili-flow-scheduler",
 )

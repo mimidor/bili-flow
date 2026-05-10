@@ -60,7 +60,7 @@ exe = EXE(
     a.zipfiles,
     a.datas,
     [],
-    name="bili-backend",
+    name="bili-flow-backend",
     console=False,
     disable_windowed_traceback=True,
     strip=False,
@@ -73,5 +73,5 @@ coll = COLLECT(
     a.datas,
     strip=False,
     upx=False,
-    name="bili-backend",
+    name="bili-flow-backend",
 )

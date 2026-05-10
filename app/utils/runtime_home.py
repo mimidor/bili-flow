@@ -20,15 +20,15 @@ def get_install_root() -> Path:
 
 
 def get_runtime_home() -> Path:
-    configured = (os.getenv("BILI_AUTO_HOME") or "").strip()
+    configured = (os.getenv("BILI_FLOW_HOME") or os.getenv("BILI_AUTO_HOME") or "").strip()
     if configured:
         return Path(configured).expanduser()
 
     if is_frozen():
         local_app_data = (os.getenv("LOCALAPPDATA") or "").strip()
         if local_app_data:
-            return Path(local_app_data).expanduser() / "bili-auto"
-        return Path.home() / "AppData" / "Local" / "bili-auto"
+            return Path(local_app_data).expanduser() / "bili-flow"
+        return Path.home() / "AppData" / "Local" / "bili-flow"
 
     return get_source_root()
 
@@ -51,4 +51,3 @@ def get_models_dir() -> Path:
 
 def get_lock_dir() -> Path:
     return get_runtime_home() / ".runtime" / "locks"
-

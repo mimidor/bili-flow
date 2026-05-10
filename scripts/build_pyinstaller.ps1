@@ -61,9 +61,9 @@ try {
   }
 
   $packagingSpecs = @(
-    @{ Name = 'bili-backend'; Spec = 'packaging/backend.spec' },
-    @{ Name = 'bili-scheduler'; Spec = 'packaging/scheduler.spec' },
-    @{ Name = 'bili-launcher'; Spec = 'packaging/launcher.spec' }
+    @{ Name = 'bili-flow-backend'; Spec = 'packaging/backend.spec' },
+    @{ Name = 'bili-flow-scheduler'; Spec = 'packaging/scheduler.spec' },
+    @{ Name = 'bili-flow-launcher'; Spec = 'packaging/launcher.spec' }
   )
 
   foreach ($item in $packagingSpecs) {

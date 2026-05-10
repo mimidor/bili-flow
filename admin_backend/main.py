@@ -24,7 +24,7 @@ from app.utils.logger import get_logger
 from app.utils.runtime_home import get_install_root
 from app.utils.task_runtime import ensure_runtime_states
 
-app = FastAPI(title="bili admin backend", version="0.1.0", docs_url=None, redoc_url=None, openapi_url=None)
+app = FastAPI(title="bili-flow admin backend", version="0.1.0", docs_url=None, redoc_url=None, openapi_url=None)
 logger = get_logger("admin_backend")
 SLOW_REQUEST_THRESHOLD_SECONDS = 2.0
 
@@ -97,7 +97,7 @@ def protected_openapi(_: str = Depends(get_current_username)):
 def protected_docs(_: str = Depends(get_current_username)):
     return get_swagger_ui_html(
         openapi_url="/openapi.json",
-        title="bili admin backend - Swagger UI",
+        title="bili-flow admin backend - Swagger UI",
         oauth2_redirect_url="/docs/oauth2-redirect",
     )
 
@@ -109,7 +109,7 @@ def protected_docs_redirect(_: str = Depends(get_current_username)):
 
 @app.get("/redoc", include_in_schema=False)
 def protected_redoc(_: str = Depends(get_current_username)):
-    return get_redoc_html(openapi_url="/openapi.json", title="bili admin backend - ReDoc")
+    return get_redoc_html(openapi_url="/openapi.json", title="bili-flow admin backend - ReDoc")
 
 
 _dist_dir = get_install_root() / "web" / "dist"
@@ -142,7 +142,7 @@ def root():
     if _dist_dir.exists():
         return JSONResponse({"message": "frontend is served from /"})
     return {
-        "message": "Bili admin backend is running",
+        "message": "bili-flow admin backend is running",
         "frontend": "run web/ separately with npm install && npm run dev",
     }
 

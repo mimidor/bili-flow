@@ -17,7 +17,7 @@ TARGET_PG_HOST = "127.0.0.1"
 TARGET_PG_PORT = 5432
 TARGET_PG_USER = "postgres"
 TARGET_PG_PASSWORD = "123456"
-TARGET_PG_DATABASE = "bili_auto"
+TARGET_PG_DATABASE = "bili_flow"
 
 
 def build_default_postgres_url() -> str:
@@ -30,7 +30,7 @@ def build_default_postgres_url() -> str:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Migrate bili-auto data from SQLite to PostgreSQL.",
+        description="Migrate bili-flow data from SQLite to PostgreSQL.",
     )
     parser.add_argument(
         "--sqlite-url",

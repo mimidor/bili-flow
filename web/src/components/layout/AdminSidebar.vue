@@ -6,7 +6,7 @@
           <img class="brand__icon" src="/bilibili-logo.svg" alt="Bilibili logo" />
         </div>
         <div v-if="!props.collapsed" class="brand__copy">
-          <div class="brand__title">bili-auto 管理后台</div>
+          <div class="brand__title">bili-flow 管理后台</div>
           <div class="brand__subtitle">内容采集、推送编排、量化回测统一管理</div>
         </div>
       </div>
@@ -156,11 +156,29 @@ const menuGroups: MenuGroup[] = [
       { label: "内容审核", path: "/content-audit", icon: IconSafe, menuKey: "menu.content_audit" },
       { label: "视频管理", path: "/videos", icon: IconFile, menuKey: "menu.videos" },
       { label: "动态管理", path: "/dynamics", icon: IconApps, menuKey: "menu.dynamics" },
-      { label: "手动推送", path: "/manual-push", icon: IconTool, menuKey: "menu.manual_push", keywords: ["推送", "BV", "任务"] },
+      {
+        label: "手动推送",
+        path: "/manual-push",
+        icon: IconTool,
+        menuKey: "menu.manual_push",
+        keywords: ["推送", "BV", "任务"],
+      },
       { label: "推送历史", path: "/pushes", icon: IconFire, menuKey: "menu.push_history" },
-      { label: "推送配置", path: "/push-targets", icon: IconApps, menuKey: "menu.push_targets", keywords: ["飞书", "推送组"] },
+      {
+        label: "推送配置",
+        path: "/push-targets",
+        icon: IconApps,
+        menuKey: "menu.push_targets",
+        keywords: ["飞书", "推送组"],
+      },
       { label: "小宇宙", path: "/podcasts", icon: IconBook, menuKey: "menu.podcasts" },
-      { label: "公众号订阅", path: "/wewe-rss", icon: IconBook, menuKey: "menu.wewe_rss", keywords: ["wewe", "rss", "公众号"] },
+      {
+        label: "公众号订阅",
+        path: "/wewe-rss",
+        icon: IconBook,
+        menuKey: "menu.wewe_rss",
+        keywords: ["wewe", "rss", "公众号"],
+      },
     ],
   },
   {
@@ -170,8 +188,20 @@ const menuGroups: MenuGroup[] = [
     accent: "#8b5cf6",
     items: [
       { label: "模型管理", path: "/llm-models", icon: IconExperiment, menuKey: "menu.llm_models" },
-      { label: "对话工作台", path: "/llm-chat", icon: IconBook, menuKey: "menu.llm_chat", keywords: ["chat", "模型对比"] },
-      { label: "提示词管理", path: "/llm-prompts", icon: IconFile, menuKey: "menu.llm_prompts", keywords: ["prompt", "提示词"] },
+      {
+        label: "对话工作台",
+        path: "/llm-chat",
+        icon: IconBook,
+        menuKey: "menu.llm_chat",
+        keywords: ["chat", "模型对比"],
+      },
+      {
+        label: "提示词管理",
+        path: "/llm-prompts",
+        icon: IconFile,
+        menuKey: "menu.llm_prompts",
+        keywords: ["prompt", "提示词"],
+      },
     ],
   },
   {
@@ -179,7 +209,15 @@ const menuGroups: MenuGroup[] = [
     title: "数据统计",
     icon: IconBarChart,
     accent: "#14b8a6",
-    items: [{ label: "Token 统计", path: "/tokens", icon: IconBarChart, menuKey: "menu.tokens", keywords: ["成本", "调用"] }],
+    items: [
+      {
+        label: "Token 统计",
+        path: "/tokens",
+        icon: IconBarChart,
+        menuKey: "menu.tokens",
+        keywords: ["成本", "调用"],
+      },
+    ],
   },
   {
     key: "qteasy",
@@ -205,8 +243,20 @@ const menuGroups: MenuGroup[] = [
       { label: "规则管理", path: "/rules", icon: IconTool, menuKey: "menu.rules" },
       { label: "文件夹映射", path: "/folder-mappings", icon: IconFolder, menuKey: "menu.folder_mappings" },
       { label: "业务配置", path: "/config", icon: IconSettings, menuKey: "menu.config" },
-      { label: "环境配置", path: "/env-config", icon: IconSafe, menuKey: "menu.env_config", keywords: ["变量", "运行时配置"] },
-      { label: "账号与角色", path: "/access-control", icon: IconUser, menuKey: "menu.access_control", keywords: ["rbac", "权限", "用户", "角色"] },
+      {
+        label: "环境配置",
+        path: "/env-config",
+        icon: IconSafe,
+        menuKey: "menu.env_config",
+        keywords: ["变量", "运行时配置"],
+      },
+      {
+        label: "账号与角色",
+        path: "/access-control",
+        icon: IconUser,
+        menuKey: "menu.access_control",
+        keywords: ["rbac", "权限", "用户", "角色"],
+      },
     ],
   },
 ];
@@ -238,11 +288,11 @@ const filteredMenuGroups = computed(() => {
     .filter((group) => group.items.length > 0);
 });
 
+const showDashboard = computed(() => hasMenuAccess(currentUser.value, "menu.dashboard"));
+
 const filteredMenuCount = computed(
   () => filteredMenuGroups.value.reduce((total, group) => total + group.items.length, 0) + (showDashboard.value ? 1 : 0),
 );
-
-const showDashboard = computed(() => hasMenuAccess(currentUser.value, "menu.dashboard"));
 
 const openKeys = computed(() => {
   const query = menuQuery.value.trim();

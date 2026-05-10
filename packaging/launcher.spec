@@ -25,7 +25,7 @@ exe = EXE(
     a.zipfiles,
     a.datas,
     [],
-    name="bili-launcher",
+    name="bili-flow-launcher",
     console=False,
     disable_windowed_traceback=True,
     strip=False,
@@ -38,5 +38,5 @@ coll = COLLECT(
     a.datas,
     strip=False,
     upx=False,
-    name="bili-launcher",
+    name="bili-flow-launcher",
 )

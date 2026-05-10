@@ -53,7 +53,7 @@ def _sanitize_object_part(value: str, fallback: str = "audio") -> str:
 
 def _build_object_key(audio_path: str) -> str:
     path = Path(audio_path)
-    prefix = (Config.ALIYUN_OSS_PREFIX or "bili-auto/asr").strip("/")
+    prefix = (Config.ALIYUN_OSS_PREFIX or "bili-flow/asr").strip("/")
     timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     stem = _sanitize_object_part(path.stem)
     suffix = path.suffix or ".m4a"

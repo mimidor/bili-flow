@@ -146,7 +146,7 @@ const currentRouteTitle = computed(() => {
 watch(
   () => route.path,
   () => {
-    document.title = `${currentRouteTitle.value} - bili-auto`;
+    document.title = `${currentRouteTitle.value} - bili-flow`;
     drawerVisible.value = false;
   },
   { immediate: true },

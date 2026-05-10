@@ -62,7 +62,7 @@ CONFIG_SPECS: dict[str, ConfigSpec] = {
     "ALIYUN_OSS_BUCKET": ConfigSpec(""),
     "ALIYUN_OSS_ACCESS_KEY_ID": ConfigSpec(""),
     "ALIYUN_OSS_ACCESS_KEY_SECRET": ConfigSpec(""),
-    "ALIYUN_OSS_PREFIX": ConfigSpec("bili-auto/asr"),
+    "ALIYUN_OSS_PREFIX": ConfigSpec("bili-flow/asr"),
     "ALIYUN_OSS_URL_EXPIRE_SECONDS": ConfigSpec(3600, "int"),
     "ALIYUN_OSS_CLEANUP": ConfigSpec(True, "bool"),
     "XYZ_BASE_URL": ConfigSpec(""),

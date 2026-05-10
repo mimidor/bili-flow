@@ -127,7 +127,7 @@ const activeRow = ref<PromptRow | null>(null);
 const editPromptText = ref("");
 const selectedSnapshot = ref<PromptSnapshot | null>(null);
 
-const storageKey = "bili-auto.prompt-snapshots";
+const storageKey = "bili-flow.prompt-snapshots";
 
 const snapshotList = computed(() => {
   const all = loadSnapshots();

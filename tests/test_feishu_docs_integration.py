@@ -42,10 +42,10 @@ def test_upload_markdown_real_api():
     print("测试：使用真实飞书 API 上传 Markdown")
     print("=" * 70)
 
-    title = "测试文档 - bili-auto 集成测试"
+    title = "测试文档 - bili-flow 集成测试"
     content = """# 测试文档
 
-这是一个由 bili-auto 集成测试创建的文档。
+这是一个由 bili-flow 集成测试创建的文档。
 
 ## 测试内容
 

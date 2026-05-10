@@ -107,11 +107,14 @@ def _seed_rbac(db) -> None:
 
     db.flush()
 
-    admin_user = db.query(AdminUser).filter_by(username=DEFAULT_SUPER_ADMIN_USERNAME).first()
+    seed_username = (Config.ADMIN_AUTH_USERNAME or DEFAULT_SUPER_ADMIN_USERNAME).strip() or DEFAULT_SUPER_ADMIN_USERNAME
+    seed_password = (Config.ADMIN_AUTH_PASSWORD or DEFAULT_SUPER_ADMIN_PASSWORD).strip() or DEFAULT_SUPER_ADMIN_PASSWORD
+
+    admin_user = db.query(AdminUser).filter_by(username=seed_username).first()
     if not admin_user:
         admin_user = AdminUser(
-            username=DEFAULT_SUPER_ADMIN_USERNAME,
-            password_hash=hash_password(DEFAULT_SUPER_ADMIN_PASSWORD),
+            username=seed_username,
+            password_hash=hash_password(seed_password),
             display_name="Super Admin",
             is_active=True,
             is_super_admin=True,

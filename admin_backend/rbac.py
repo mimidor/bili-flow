@@ -160,8 +160,8 @@ DEFAULT_ROLE_SEEDS: tuple[RoleSeed, ...] = (
     RoleSeed("viewer", "Viewer", "Read-only access to overview, logs, push history and qteasy.", VIEWER_PERMISSION_KEYS),
 )
 
-DEFAULT_SUPER_ADMIN_USERNAME = "545189391"
-DEFAULT_SUPER_ADMIN_PASSWORD = "fkm1996TC"
+DEFAULT_SUPER_ADMIN_USERNAME = "admin"
+DEFAULT_SUPER_ADMIN_PASSWORD = "change-me"
 
 
 def is_read_method(method: str) -> bool:

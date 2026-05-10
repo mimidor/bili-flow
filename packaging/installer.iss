@@ -1,5 +1,5 @@
-#define AppName "bili-auto"
-#define AppPublisher "bili-auto"
+#define AppName "bili-flow"
+#define AppPublisher "bili-flow"
 #define AppURL "https://example.com"
 #ifndef SourceDir
   #define SourceDir "..\dist\release"
@@ -14,11 +14,11 @@ AppName={#AppName}
 AppVersion={#AppVersion}
 AppVerName={#AppName} {#AppVersion}
 AppPublisher={#AppPublisher}
-DefaultDirName={localappdata}\Programs\bili-auto
+DefaultDirName={localappdata}\Programs\bili-flow
 DefaultGroupName={#AppName}
 DisableProgramGroupPage=yes
 OutputDir=..\dist\installer
-OutputBaseFilename=bili-auto-setup-{#AppVersion}
+OutputBaseFilename=bili-flow-setup-{#AppVersion}
 Compression=lzma2
 SolidCompression=yes
 WizardStyle=modern
@@ -31,12 +31,12 @@ UsePreviousAppDir=yes
 Name: "desktopicon"; Description: "Create a &desktop icon"; GroupDescription: "Additional icons:"; Flags: unchecked
 
 [Files]
-Source: "{#SourceDir}\.env.example"; DestDir: "{localappdata}\bili-auto"; DestName: ".env"; Flags: onlyifdoesntexist ignoreversion
+Source: "{#SourceDir}\.env.example"; DestDir: "{localappdata}\bili-flow"; DestName: ".env"; Flags: onlyifdoesntexist ignoreversion
 Source: "{#SourceDir}\*"; DestDir: "{app}"; Flags: recursesubdirs createallsubdirs ignoreversion
 
 [Icons]
-Name: "{autoprograms}\{#AppName}"; Filename: "{app}\bili-launcher\bili-launcher.exe"
-Name: "{autodesktop}\{#AppName}"; Filename: "{app}\bili-launcher\bili-launcher.exe"; Tasks: desktopicon
+Name: "{autoprograms}\{#AppName}"; Filename: "{app}\bili-flow-launcher\bili-flow-launcher.exe"
+Name: "{autodesktop}\{#AppName}"; Filename: "{app}\bili-flow-launcher\bili-flow-launcher.exe"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\bili-launcher\bili-launcher.exe"; Description: "Launch {#AppName}"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\bili-flow-launcher\bili-flow-launcher.exe"; Description: "Launch {#AppName}"; Flags: nowait postinstall skipifsilent
