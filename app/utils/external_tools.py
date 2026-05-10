@@ -134,6 +134,35 @@ def resolve_ffmpeg_bin() -> Optional[Path]:
     return None
 
 
+def resolve_ytdlp_executable() -> Optional[Path]:
+    """
+    Resolve the yt-dlp executable path.
+
+    Priority:
+    1. active virtual environment Scripts directory
+    2. install root / packaged tools
+    3. current PATH via shutil.which
+    """
+    env_root = Path(sys.prefix)
+    candidate_paths = _iter_existing_paths(
+        [
+            env_root / "Scripts" / "yt-dlp.exe",
+            env_root / "bin" / "yt-dlp",
+            get_install_root() / "tools" / "yt-dlp.exe",
+            get_install_root().parent / "tools" / "yt-dlp.exe",
+        ]
+    )
+    for candidate in candidate_paths:
+        if candidate.is_file():
+            return candidate
+
+    ytdlp_path = shutil.which("yt-dlp.exe") or shutil.which("yt-dlp")
+    if ytdlp_path:
+        return Path(ytdlp_path).resolve()
+
+    return None
+
+
 def run_text_subprocess(cmd: list[str], **kwargs) -> subprocess.CompletedProcess:
     """
     Run a subprocess with UTF-8 decoding and replacement for invalid bytes.

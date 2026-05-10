@@ -66,10 +66,19 @@ def _build_env() -> dict[str, str]:
     env["BILI_FLOW_HOME"] = str(runtime_home)
     env["BILI_AUTO_HOME"] = str(runtime_home)
 
+    venv_scripts = PROJECT_ROOT / ".venv" / "Scripts"
+    path_parts: list[str] = []
+    if venv_scripts.exists():
+        path_parts.append(str(venv_scripts))
+
     tools_dir = _release_root() / "tools"
     if tools_dir.exists():
-        current_path = env.get("PATH", "")
-        env["PATH"] = os.pathsep.join([str(tools_dir), current_path]) if current_path else str(tools_dir)
+        path_parts.append(str(tools_dir))
+    current_path = env.get("PATH", "")
+    if current_path:
+        path_parts.append(current_path)
+    if path_parts:
+        env["PATH"] = os.pathsep.join(path_parts)
     return env
 
 

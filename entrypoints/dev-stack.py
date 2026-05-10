@@ -188,6 +188,12 @@ def _build_env() -> dict[str, str]:
     env = os.environ.copy()
     env.setdefault("PYTHONUTF8", "1")
     env.setdefault("PYTHONIOENCODING", "utf-8")
+    venv_scripts = VENV_PYTHON.parent
+    current_path = env.get("PATH", "")
+    path_parts = [str(venv_scripts)]
+    if current_path:
+        path_parts.append(current_path)
+    env["PATH"] = os.pathsep.join(path_parts)
     return env
 
 

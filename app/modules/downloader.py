@@ -7,7 +7,7 @@ from datetime import datetime
 from pathlib import Path
 from app.utils.logger import get_logger
 from app.utils.paths import PathManager, get_path_manager
-from app.utils.external_tools import resolve_ffmpeg_bin, run_text_subprocess
+from app.utils.external_tools import resolve_ffmpeg_bin, resolve_ytdlp_executable, run_text_subprocess
 from app.utils.runtime_home import get_data_dir
 from app.models.database import get_db, Subscription
 from config import Config
@@ -36,6 +36,13 @@ def _get_ffmpeg_location_args() -> list:
 
 def _run_text_subprocess(cmd: list[str]) -> subprocess.CompletedProcess:
     return run_text_subprocess(cmd)
+
+
+def _get_ytdlp_executable() -> str:
+    ytdlp_executable = resolve_ytdlp_executable()
+    if ytdlp_executable:
+        return str(ytdlp_executable)
+    return "yt-dlp"
 
 
 def _sanitize_filename(title: str, max_length: int = 50) -> str:
@@ -162,7 +169,7 @@ def download_audio(bvid: str, output_dir: str = None, title: str = None, pub_tim
 
     output_template = str(output_path)
     cmd = [
-        "yt-dlp",
+        _get_ytdlp_executable(),
         "-x",
         "--audio-format",
         "m4a",
@@ -242,7 +249,7 @@ def download_video(bvid: str, quality: str = DEFAULT_QUALITY, output_dir: str = 
 
     output_template = str(output_path)
     cmd = [
-        "yt-dlp",
+        _get_ytdlp_executable(),
         "-f", format_selector,
         "--merge-output-format", "mp4",
         "-o", output_template,
@@ -387,7 +394,7 @@ def download_video_new(
 
     output_template = str(output_path)
     cmd = [
-        "yt-dlp",
+        _get_ytdlp_executable(),
         "-f", format_selector,
         "--merge-output-format", "mp4",
         "-o", output_template,
@@ -454,7 +461,7 @@ def download_audio_new(
 
     output_template = str(output_path)
     cmd = [
-        "yt-dlp",
+        _get_ytdlp_executable(),
         "-x",
         "--audio-format",
         "m4a",
