@@ -1,0 +1,109 @@
+[project]
+name = "bili"
+version = "0.1.0"
+description = "B站UP主自动化摘要系统"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "alembic==1.11.1",
+  "fastapi==0.116.1",
+  "faster-whisper==1.2.1",
+  "feishu-sdk==1.0.3",
+  "huggingface_hub>=0.34.0,<1.0",
+  "jinja2==3.1.6",
+  "httpx[socks]==0.25.2",
+  "modelscope>=1.36.1",
+  "numpy==2.4.3",
+  "onnxruntime==1.24.4",
+  "oss2>=2.19.0",
+  "opencc-python-reimplemented>=0.1.7",
+  "nvidia-cublas-cu12==12.9.2.10",
+  "nvidia-cuda-nvrtc-cu12==12.9.86",
+  "nvidia-cuda-runtime-cu12==12.9.79",
+  "nvidia-cudnn-cu12==9.21.0.82",
+  "openai==2.30.0",
+  "dashscope>=1.25.15",
+  "psycopg[binary]>=3.2.10",
+  "pillow==12.1.1",
+  "pycryptodome==3.21.0",
+  "pydantic==2.12.5",
+  "python-dotenv==1.2.2",
+  "python-multipart==0.0.20",
+  "qwen-asr>=0.0.6",
+  "requests==2.31.0",
+  "schedule==1.2.0",
+  "sqlalchemy==2.0.48",
+  "uvicorn[standard]==0.35.0",
+  "typer>=0.9.0",
+  "yt-dlp==2026.3.17",
+  "pytest>=9.0.2",
+]
+
+[project.optional-dependencies]
+build = [
+  "pyinstaller>=6.14.1",
+]
+test = [
+  "pytest>=8.0.0",
+  "pytest-asyncio>=0.21.0",
+  "pytest-cov>=4.0.0",
+  "pytest-mock>=3.10.0",
+]
+
+[project.scripts]
+bili-rules = "app.tools.classification_rules:app"
+
+[tool.setuptools]
+packages = [
+  "app",
+  "app.modules",
+  "app.models",
+  "app.services",
+  "app.tools",
+  "app.utils",
+  "admin_backend",
+  "admin_backend.routers",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+  "-v",
+  "--tb=short",
+]
+filterwarnings = [
+  "ignore::DeprecationWarning",
+]
+
+[tool.coverage.run]
+source = ["app"]
+branch = true
+omit = [
+  "*/tests/*",
+  "*/__pycache__/*",
+  "*/migrations/*",
+  "*/mcp__playwright__*",
+]
+
+[tool.coverage.report]
+precision = 2
+show_missing = true
+skip_covered = false
+exclude_lines = [
+  "pragma: no cover",
+  "def __repr__",
+  "raise NotImplementedError",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+  "@abstractmethod",
+  "@abc.abstractmethod",
+  "pass",
+  "raise",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"

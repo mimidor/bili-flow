@@ -1,0 +1,46 @@
+{
+  "name": "bili-admin-web",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node ./scripts/dev-singleton.mjs",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@arco-design/web-vue": "^2.58.0",
+    "@element-plus/icons-vue": "^2.3.2",
+    "@fortawesome/fontawesome-svg-core": "^7.2.0",
+    "@fortawesome/free-brands-svg-icons": "^7.2.0",
+    "@fortawesome/free-solid-svg-icons": "^7.2.0",
+    "@fortawesome/vue-fontawesome": "^3.1.3",
+    "@noble/ed25519": "^3.0.0",
+    "@vicons/ionicons5": "^0.13.0",
+    "@xterm/addon-fit": "^0.11.0",
+    "@xterm/addon-web-links": "^0.12.0",
+    "@xterm/xterm": "^6.0.0",
+    "echarts": "^5.6.0",
+    "element-plus": "^2.11.5",
+    "highlight.js": "^11.11.1",
+    "js-yaml": "^4.1.1",
+    "katex": "^0.16.44",
+    "markdown-it": "^14.1.1",
+    "naive-ui": "^2.43.2",
+    "pdfjs-dist": "^3.11.174",
+    "pinia": "^3.0.4",
+    "vue": "^3.5.18",
+    "vue-i18n": "^9.0.0",
+    "vue-pdf-embed": "^2.1.4",
+    "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/markdown-it": "^14.1.2",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "unplugin-vue-components": "^28.4.1",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.5",
+    "vue-tsc": "^3.1.2"
+  }
+}

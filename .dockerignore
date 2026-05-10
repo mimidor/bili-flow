@@ -1,0 +1,14 @@
+.git
+.idea
+.pytest_cache
+.venv
+.vscode
+.env
+__pycache__
+*.pyc
+data
+logs
+.runtime
+web/node_modules
+web/dist
+bili.egg-info

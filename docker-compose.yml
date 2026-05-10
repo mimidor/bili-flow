@@ -1,0 +1,19 @@
+services:
+  bili-auto:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: bili-auto:latest
+    container_name: bili-auto
+    env_file:
+      - .env
+    environment:
+      APP_MODE: all
+      BACKEND_HOST: 0.0.0.0
+      BACKEND_PORT: 8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    restart: unless-stopped
